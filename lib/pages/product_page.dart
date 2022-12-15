@@ -39,6 +39,10 @@ class HomePage extends StatelessWidget {
                       width: 180,
                       child: ProductCard(),
                     ),
+                    Positioned(
+                      bottom: -10,
+                      child: AddToCartButton(),
+                    ),
                   ],
                 ),
               ),
