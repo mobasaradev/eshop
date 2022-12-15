@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Positioned(
                       bottom: -10,
-                      child: AddToCartButton(),
+                      child: QuantityButtonBar(),
                     ),
                   ],
                 ),
