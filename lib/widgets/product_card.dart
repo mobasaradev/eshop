@@ -1,8 +1,10 @@
+import 'package:e_shop/models/product.dart';
 import 'package:e_shop/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  const ProductCard({super.key, required this.product});
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -17,52 +19,56 @@ class ProductCard extends StatelessWidget {
         child: Column(
           children: [
             Image.network(
-              "https://d1ojphegpburrh.cloudfront.net/media/images/product/None/1380/Add_a_heading_1.png",
+              product.image,
               width: 148,
               height: 148,
             ),
             const SizedBox(
               height: 5,
             ),
-            const Text(
-              "নুরজাহান সুপার ফাইন চাল - ৫০ কেজি",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: AppColors.secondaryText),
+            Text(
+              product.productName,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+                color: AppColors.secondaryText,
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'ক্রয়:',
-                  style:
-                      TextStyle(fontSize: 10, color: AppColors.secondaryText1),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.secondaryText1,
+                  ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
+                //current Price
                 Text(
-                  '৳ 20.00',
-                  style: TextStyle(
+                  '৳ ${product.currentCharge}',
+                  style: const TextStyle(
                     fontSize: 16,
                     color: AppColors.primaryText,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
                 Text(
-                  '৳ 22.00',
-                  style: TextStyle(
+                  '৳ ${product.discountCharge}',
+                  style: const TextStyle(
                     fontSize: 12,
                     color: AppColors.primaryText,
                     fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.italic,
+                    decoration: TextDecoration.lineThrough,
                   ),
                 ),
               ],
@@ -72,37 +78,41 @@ class ProductCard extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'বিক্রয়:',
-                  style:
-                      TextStyle(fontSize: 10, color: AppColors.secondaryText1),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.secondaryText1,
+                  ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Text(
-                  '৳ 25.00',
-                  style: TextStyle(
+                  '৳ ${product.sellingPrice}',
+                  style: const TextStyle(
                     fontSize: 12,
                     color: AppColors.secondaryText1,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text(
+                const Text(
                   'লাভ:',
-                  style:
-                      TextStyle(fontSize: 10, color: AppColors.secondaryText1),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.secondaryText1,
+                  ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Text(
-                  '৳ 25.00',
-                  style: TextStyle(
+                  '৳ ${product.profit}',
+                  style: const TextStyle(
                     fontSize: 12,
                     color: AppColors.secondaryText1,
                     fontWeight: FontWeight.w600,

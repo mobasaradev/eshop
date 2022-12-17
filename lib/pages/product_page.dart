@@ -1,3 +1,4 @@
+import 'package:e_shop/models/models.dart';
 import 'package:e_shop/utils/utils.dart';
 import 'package:e_shop/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
           children: [
             const SearchBar(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             Expanded(
               child: GridView.builder(
@@ -30,26 +31,55 @@ class HomePage extends StatelessWidget {
                   mainAxisExtent: 320,
                 ),
                 itemCount: 9,
-                itemBuilder: (context, index) => Stack(
-                  clipBehavior: Clip.none,
-                  alignment: AlignmentDirectional.bottomCenter,
-                  children: const [
-                    Positioned(
-                      height: 290,
-                      width: 180,
-                      child: ProductCard(),
-                    ),
-                    Positioned(
-                      right: 20,
-                      top: 45,
-                      child: StockOutBadge(),
-                    ),
-                    Positioned(
-                      bottom: -10,
-                      child: QuantityButtonBar(),
-                    ),
-                  ],
-                ),
+                itemBuilder: (context, index) {
+                  const product = Product(
+                    id: 1,
+                    brandName: "brandName",
+                    //queryString: "queryString",
+                    image:
+                        "https://d1ojphegpburrh.cloudfront.net/media/images/product/None/1380/Add_a_heading_1.png",
+                    currentCharge: 20.00,
+                    discountCharge: 2.00,
+                    sellingPrice: 25.00,
+                    profit: 25.00,
+                    images: [],
+                    productName: "নুরজাহান সুপার ফাইন চাল - ৫০ কেজি",
+                    description: "description",
+                    maximumOrder: 12,
+                    stock: 0,
+                    seller: "seller",
+                  );
+                  const cardQuantity = 1;
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    alignment: AlignmentDirectional.bottomCenter,
+                    children: [
+                      const Positioned(
+                        height: 290,
+                        width: 180,
+                        child: ProductCard(
+                          product: product,
+                        ),
+                      ),
+                      if (product.stock == 0)
+                        const Positioned(
+                          right: 20,
+                          top: 45,
+                          child: StockOutBadge(),
+                        ),
+                      if (cardQuantity == 0)
+                        const Positioned(
+                          bottom: -10,
+                          child: AddToCartButton(),
+                        ),
+                      if (cardQuantity > 0)
+                        const Positioned(
+                          bottom: -10,
+                          child: QuantityButtonBar(),
+                        ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
