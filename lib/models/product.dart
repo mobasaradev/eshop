@@ -1,3 +1,4 @@
+import 'package:e_shop/models/models.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
@@ -10,7 +11,7 @@ class Product extends Equatable {
     required this.discountCharge,
     required this.sellingPrice,
     required this.profit,
-    //required this.images,
+    required this.images,
     required this.productName,
     required this.description,
     required this.maximumOrder,
@@ -25,7 +26,7 @@ class Product extends Equatable {
   final num discountCharge;
   final num sellingPrice;
   final num profit;
-  //final List<DetailImage> images;
+  final List<DetailImage> images;
   final String productName;
   final String description;
   final int maximumOrder;
@@ -41,10 +42,10 @@ class Product extends Equatable {
         discountCharge: json['discountCharge'] ?? 0,
         sellingPrice: json['sellingPrice'] ?? 0,
         profit: json['profit'] ?? 0,
-        // images: [
-        //   for (final imageJson in json['images'])
-        //     DetailImage.fromJson(imageJson),
-        // ],
+        images: [
+          for (final imageJson in json['images'])
+            DetailImage.fromJson(imageJson),
+        ],
         productName: json['productName'] ?? '',
         description: json['description'] ?? '',
         maximumOrder: json['maximumOrder'] ?? 0,
@@ -63,7 +64,7 @@ class Product extends Equatable {
       discountCharge,
       sellingPrice,
       profit,
-      //images,
+      images,
       productName,
       description,
       maximumOrder,
