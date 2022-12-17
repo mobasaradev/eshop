@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
           children: [
             const SearchBar(),
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
             Expanded(
               child: GridView.builder(
@@ -38,6 +38,11 @@ class HomePage extends StatelessWidget {
                       height: 290,
                       width: 180,
                       child: ProductCard(),
+                    ),
+                    Positioned(
+                      right: 20,
+                      top: 45,
+                      child: StockOutBadge(),
                     ),
                     Positioned(
                       bottom: -10,
