@@ -1,3 +1,4 @@
+import 'package:e_shop/utils/utils.dart';
 import 'package:http/http.dart';
 
 class ApiService {
@@ -8,8 +9,7 @@ class ApiService {
   };
 
   Future<StreamedResponse?> fetchProducts() async {
-    final url = Uri.parse(
-        "https://panel.supplyline.network/api/product/search-suggestions/?limit=10&offset=10&search=rice");
+    final url = Uri.parse(AppConfig.baseUrl);
     final request = Request('GET', url);
     request.headers.addAll(headers);
 
