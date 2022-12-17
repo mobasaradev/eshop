@@ -1,4 +1,5 @@
 import 'package:e_shop/models/models.dart';
+import 'package:e_shop/repositories/products_repo.dart';
 import 'package:e_shop/utils/utils.dart';
 import 'package:e_shop/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProductsRepo().getProducts().then(
+      (value) {
+        debugPrint(value.toString());
+      },
+    );
+
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
