@@ -10,17 +10,15 @@ class ApiService {
 
   Future<StreamedResponse?> fetchProducts() async {
     final url = Uri.parse(AppConfig.baseUrl);
-    final request = Request('GET', url);
-    request.headers.addAll(headers);
+    final request = Request('GET', url)..request.headers.addAll(headers);
 
     try {
       final response = await request.send();
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return response;
       }
-    } catch (_) {}
-
-    print("[FAIL!] Couldn't fetch the products.");
-    return null;
+    } catch (_) {
+      return null;
+    }
   }
 }
